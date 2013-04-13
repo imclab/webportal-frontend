@@ -1,0 +1,120 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="stylesheet" href="styles/main.css">
+        <!-- build:js scripts/vendor/modernizr.js -->
+        <script src="components/modernizr/modernizr.js"></script>
+        <!-- endbuild -->
+    </head>
+    <body>
+        <div class="js-wrapper">
+            <div class="navbar navbar-inverse navbar-static-top">
+                <div class="navbar-inner">
+                    <div class="container">
+                        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </a>    
+                        <a class="brand" href="#">lang1SvName</a>
+                        <div class="nav-collapse collapse" id="main-navbar">
+                            <ul class="nav">
+                                <li><a href="index.html">lang1Home</a></li>
+                                <li class="active"><a href="auction.html">lang1Auction</a></li>
+                                <li><a href="myitems.html">lang1My_itens</a></li>
+                                <li><a href="myauctions.html">lang1My_auction</a></li>
+                                <li><a href="logout">lang1Logout</a></li>
+                            </ul>
+                            <div class="nav pull-right id">    
+                                <img class="avatar" src="http://minotar.net/avatar/" alt="avatar"/>
+                                <ul class="id-list">
+                                    <li>lang1Name : <span id="user"></span></li>
+                                    <li>lang1Money : <span id="money"></span></li>
+                                    <li>lang1Mail : <span id="mail"></span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <h2>lang1Title</h2>
+                <div id="tabs">
+                    <ul>
+                        <li><a href="#tabs-1">Search</a></li>
+                        <li><a href="auction/block.html">langBlocks</a></li>
+                        <li><a href="auction/combat.html">langCombat</a></li>
+                        <li><a href="auction/tools.html">langTools</a></li>
+                        <li><a href="auction/food.html">langFood</a></li>
+                        <li><a href="auction/decoration.html">langDecoration</a></li>
+                        <li><a href="auction/redstone.html">langRedstone</a></li>
+                        <li><a href="auction/transportation.html">langTransportation</a></li>
+                        <li><a href="auction/micellaneous.html">langMicellaneous</a></li>
+                        <li><a href="auction/materials.html">langMaterials</a></li>
+                        <li><a href="auction/others.html">langOthers</a></li>
+                    </ul>
+                    <div id="tabs-1">
+                        <p>Do you want to buy or sell ?</p>
+                    </div>
+                </div>
+                <footer>
+                    <p>
+                        Made by Stutiguias. Design by renanslk( or redbull52 ).
+                        WebPortal for more usage info visit the <a href="http://dev.bukkit.org/server-mods/webauctionlite">BukkitDev site</a>.
+                    </p>
+                </footer>
+            </div>
+        </div>
+
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g,s)}(document,'script'));
+        </script>
+
+        <!-- build:js scripts/main.js -->
+        <script data-main="scripts/main" src="components/requirejs/require.js"></script>
+        <!-- endbuild -->
+
+        <script>
+            define('auction', ['jquery'], function ($) {
+                $(document).ready(function () {
+
+                    $(function () {
+                        $("#tabs").tabs({
+                            load: function(event, ui) {  },
+                            ajaxOptions: {
+                                error: function (xhr, status, index, anchor) {
+                                    $(anchor.hash).html("Couldn't load this tab.");
+                                }
+                            }
+                        });
+                    });
+                
+                    jQuery.fn.dataTableExt.oApi.fnProcessingIndicator = function ( oSettings, onoff ) {
+                        if ( typeof( onoff ) == 'undefined' ) {
+                            onoff = true;
+                        }
+                        this.oApi._fnProcessingDisplay( oSettings, onoff );
+                    };
+                });
+            });
+        </script>
+        
+    </body>
+</html>

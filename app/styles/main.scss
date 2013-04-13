@@ -1,0 +1,26 @@
+$iconSpritePath: "../images/glyphicons-halflings.png";
+$iconWhiteSpritePath: "../images/glyphicons-halflings-white.png";
+
+@import 'sass-bootstrap/lib/bootstrap';
+@import 'table_jui';
+//@import 'dark-hive/jquery-ui-1.8.18.custom';
+
+.navbar .brand {
+	padding: 22px 20px;
+}
+
+.navbar .nav > li {
+	padding: 12px 0;
+}
+
+.id-list {
+	list-style: none;
+	display: inline-block;
+	margin: 0 0 0 10px;
+	color: white;
+}
+
+.avatar {
+	width: 64px;
+	float: left
+}
