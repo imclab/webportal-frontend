@@ -58,7 +58,7 @@ define(['jquery', 'translate', 'datatables'], function ($, translate) {
                         'data': aoData,
                         'success': fnCallback,
                         'timeout': 15000,
-                        'error': this.handleAjaxError
+                        'error': this.handleAjaxError()
                     } );
                 }
             });

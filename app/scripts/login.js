@@ -2,9 +2,15 @@
 
 define(['jquery'], function ($) {
     'use strict';
-/*
-    $(document).ready(function () {
-        var loginform = function(form) {
+
+    var login;
+
+    login = {
+        init : function () {
+            this.loginForm();
+        },
+
+        loginForm : function (form) {
             $.ajax({
                 url: form.action,
                 data: $(form).serialize(),
@@ -19,12 +25,14 @@ define(['jquery'], function ($) {
                     }
                 },
                 error: function (error) {
-
+                    console.log(error);
                 },
-                dataType: "text"
+                dataType: 'text'
             });
             return false;
-        };
-    });
-*/
+        }
+    };
+
+    return login;
+
 });

@@ -1,59 +1,70 @@
 /*global define */
 
-define(['jquery'], function ($) {
+define(['jquery', 'translate'], function ($, translate) {
     'use strict';
 
-    for (var prop in langIndex) {
-        var patt = new RegExp(prop, "g");
-        $('#mainTable6').html($('#mainTable6').html().replace(patt, langIndex[prop]));
-    }
-    oTable6 = $('#mainTable6').dataTable({
-        "bProcessing": true,
-        "bJQueryUI": true,
-        "bStateSave": false,
-        "bDestroy": true,
-        "oSearch": { "sSearch": "" },
-        "sPaginationType": "full_numbers",
-        "bServerSide": true,
-        "sAjaxSource": "fill/auction/bytools",
-        "oLanguage": {
-            "sProcessing": jsIndex['sProcessing'],
-            "sLengthMenu": jsIndex['sLengthMenu'],
-            "sZeroRecords": jsIndex['sZeroRecords'],
-            "sInfo": jsIndex['sInfo'],
-            "sInfoEmpty": jsIndex['sInfoEmpty'],
-            "sInfoFiltered": jsIndex['sInfoFiltered'],
-            "sSearch": jsIndex['sSearch'],
-            "sInfoPostFix": "",
-            "sUrl": "",
-            "oPaginate": {
-                "sFirst": jsIndex['sFirst'],
-                "sPrevious": jsIndex['sPrevious'],
-                "sNext": jsIndex['sNext'],
-                "sLast": jsIndex['sLast']
+    var auctionTools;
+
+    auctionTools = {
+        init : function() {
+            for (var prop in translate) {
+                var patt = new RegExp(prop, 'g');
+                $('#mainTable6').html($('#mainTable6').html().replace(patt, translate[prop]));
             }
+            this.oTable();
         },
-        "fnServerData": function ( sSource, aoData, fnCallback ) {
-            $.ajax( {
-                "dataType": 'json',
-                "type": "GET",
-                "url": sSource,
-                "data": aoData,
-                "success": fnCallback,
-                "timeout": 15000,  
-                "error": handleAjaxError 
-            } );
+
+        oTable : function() {
+            return $('#mainTable6').dataTable({
+                'bProcessing': true,
+                'bJQueryUI': true,
+                'bStateSave': false,
+                'bDestroy': true,
+                'oSearch': { 'sSearch': '' },
+                'sPaginationType': 'full_numbers',
+                'bServerSide': true,
+                'sAjaxSource': 'fill/auction/bytools',
+                'oLanguage': {
+                    'sProcessing': translate.sProcessing,
+                    'sLengthMenu': translate.sLengthMenu,
+                    'sZeroRecords': translate.sZeroRecords,
+                    'sInfo': translate.sInfo,
+                    'sInfoEmpty': translate.sInfoEmpty,
+                    'sInfoFiltered': translate.sInfoFiltered,
+                    'sSearch': translate.sSearch,
+                    'sInfoPostFix': '',
+                    'sUrl': '',
+                    'oPaginate': {
+                        'sFirst': translate.sFirst,
+                        'sPrevious': translate.sPrevious,
+                        'sNext': translate.sNext,
+                        'sLast': translate.sLast
+                    }
+                },
+                'fnServerData': function ( sSource, aoData, fnCallback ) {
+                    $.ajax( {
+                        'dataType': 'json',
+                        'type': 'GET',
+                        'url': sSource,
+                        'data': aoData,
+                        'success': fnCallback,
+                        'timeout': 15000,
+                        'error': this.handleAjaxError()
+                    } );
+                }
+            });
+        },
+        handleAjaxError : function( xhr, textStatus) {
+            if ( textStatus === 'timeout' ) {
+                console.log( 'The server took too long to send the data.' );
+            }
+            else {
+                console.log( 'An error occurred on the server. Please try again in a minute.' );
+            }
+            this.oTable.fnProcessingIndicator( false );
         }
-    });
-        
-    function handleAjaxError( xhr, textStatus, error ) {
-        if ( textStatus === 'timeout' ) {
-            alert( 'The server took too long to send the data.' );
-        }
-        else {
-            alert( 'An error occurred on the server. Please try again in a minute.' );
-        }
-        oTable.fnProcessingIndicator( false );
-    }
+    };
+
+    return auctionTools;
 
 });

@@ -2,40 +2,38 @@
 
 define(function ($) {
     'use strict';
-/*
-    $(document).ready(function () {
-        var buy;
-        var del;
-        var adm;
-        var postauction;
-        var adminshop;
-        var mail;
-        var cancel;
-        var box;
 
-        $.ajax({
-            url: '/server/username/info',
-            success: function (data) {
-                try {
-                    var vals = data.split(',');
-                    $('#user').html(vals[0] + vals[1]);
-                    $('#money').html(vals[2]);
-                    $('#mail').html(vals[3]);
-                    $('#avatarimg').attr('src', 'http://minotar.net/avatar/' + vals[0]);
+    var info;
 
-                } catch (err) {
-                    $('#user').html(err);
-                }
-            },
-            error: function (data) {
-                $('#user').html('Null');
-                console.log(data);
-            },
-            dataType: 'text'
-        });
+    info = {
+        init : function() {
+            this.getUserData();
+        },
 
+        getUserData : function() {
+            $.ajax({
+                url: '/server/username/info',
+                success: function (data) {
+                    try {
+                        var vals = data.split(',');
+                        $('#user').html(vals[0] + vals[1]);
+                        $('#money').html(vals[2]);
+                        $('#mail').html(vals[3]);
+                        $('#avatarimg').attr('src', 'http://minotar.net/avatar/' + vals[0]);
 
-        buy = function (form) {
+                    } catch (err) {
+                        $('#user').html(err);
+                    }
+                },
+                error: function (data) {
+                    $('#user').html('Null');
+                    console.log(data);
+                },
+                dataType: 'text'
+            });
+        },
+
+        buy : function (form) {
             var ar = $(form).serializeArray();
             $.ajax({
                 url: form.action,
@@ -52,15 +50,15 @@ define(function ($) {
                     }
                 },
                 error: function (error) {
-
+                    console.log(error);
                 },
                 dataType: 'text'
             });
 
             return false;
-        };
+        },
 
-        del =  function (form) {
+        del :  function (form) {
             var ar = $(form).serializeArray();
             $.ajax({
                 url: form.action,
@@ -77,15 +75,15 @@ define(function ($) {
                     }
                 },
                 error: function (error) {
-
+                    console.log(error);
                 },
                 dataType: 'text'
             });
 
             return false;
-        };
+        },
 
-        adm = function (form) {
+        adm : function (form) {
             $.ajax({
                 url: form.action,
                 data: $(form).serialize(),
@@ -99,9 +97,9 @@ define(function ($) {
             });
 
             return false;
-        };
+        },
 
-        postauction =  function (form) {
+        postauction :  function (form) {
             var ar = $(form).serializeArray();
             $.ajax({
                 url: form.action,
@@ -118,15 +116,15 @@ define(function ($) {
                     }
                 },
                 error: function (error) {
-
+                    console.log(error);
                 },
                 dataType: 'text'
             });
 
             return false;
-        };
+        },
 
-        adminshop = function (form) {
+        adminshop : function (form) {
             var ar = $(form).serializeArray();
             $.ajax({
                 url: form.action,
@@ -143,15 +141,15 @@ define(function ($) {
                     }
                 },
                 error: function (error) {
-
+                    console.log(error);
                 },
                 dataType: 'text'
             });
 
             return false;
-        };
+        },
 
-        mail = function (form) {
+        mail : function (form) {
             var ar = $(form).serializeArray();
             $.ajax({
                 url: form.action,
@@ -168,9 +166,9 @@ define(function ($) {
             });
 
             return false;
-        };
+        },
 
-        cancel = function (form) {
+        cancel : function (form) {
             var ar = $(form).serializeArray();
             $.ajax({
                 url: form.action,
@@ -187,9 +185,9 @@ define(function ($) {
             });
 
             return false;
-        };
+        },
 
-        box = function() {
+        box : function() {
             $.ajax({
                 url: '/box/1',
                 success: function (data) {
@@ -215,7 +213,10 @@ define(function ($) {
                     $('#box2').html(error);
                 },
             });
-        };
-    });
-*/
+        }
+
+    };
+
+    return info;
+
 });

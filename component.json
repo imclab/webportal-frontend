@@ -6,7 +6,8 @@
     "requirejs": "~2.1.4",
     "modernizr": "~2.6.2",
     "jquery": "~1.9.1",
-    "datatables": "~1.9.4"
+    "datatables": "~1.9.4",
+    "jquery-ui": "~1.10.2"
   },
   "devDependencies": {}
 }

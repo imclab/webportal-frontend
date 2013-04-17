@@ -1,6 +1,7 @@
 require.config({
     paths: {
         jquery: '../components/jquery/jquery',
+        jqueryui: '../components/jquery-ui/ui/jquery-ui.custom',
         datatables: '../components/datatables/media/js/jquery.dataTables',
         bootstrap: 'vendor/bootstrap'
     },
@@ -8,6 +9,9 @@ require.config({
         bootstrap: {
             deps: ['jquery'],
             exports: 'jquery'
+        },
+        jqueryui: {
+            deps: ['jquery']
         },
         datatables: {
             deps: ['jquery']
