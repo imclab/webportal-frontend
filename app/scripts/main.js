@@ -12,10 +12,10 @@ require.config({
     }
 });
 
-require(['app', 'jquery', 'translate', 'bootstrap', 'datatables', 'datatables.numericSort'], function (app, $, translate) {
+require(['app', 'jquery', 'translate'], function (app, $, translate) {
     'use strict';
+
     $(document).ready(function () {
-        var location;
         var replaceText = function () {
             var prop;
             var patt;
@@ -25,6 +25,6 @@ require(['app', 'jquery', 'translate', 'bootstrap', 'datatables', 'datatables.nu
             }
         };
         replaceText();
-        location = $(location).attr('pathname');
+        app.init();
     });
 });
