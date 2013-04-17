@@ -2,7 +2,7 @@
 
 define(function ($) {
     'use strict';
-
+/*
     $(document).ready(function () {
         var buy;
         var del;
@@ -217,4 +217,5 @@ define(function ($) {
             });
         };
     });
+*/
 });

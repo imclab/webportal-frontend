@@ -1,64 +1,72 @@
 /*global define */
 
-define(['jquery'], function ($) {
+define(['jquery', 'translate', 'datatables'], function ($, translate) {
     'use strict';
 
-    $(document).ready(function () {
-        var oTable;
-        var handleAjaxError;
+    var myAuctions;
 
-        $.fn.dataTableExt.oApi.fnProcessingIndicator = function ( oSettings, onoff ) {
-            if ( typeof( onoff ) == 'undefined' ) {
-                onoff = true;
-            }
-            this.oApi._fnProcessingDisplay( oSettings, onoff );
-        };
+    $.fn.dataTableExt.oApi.fnProcessingIndicator = function ( oSettings, onoff ) {
+        if ( typeof( onoff ) === 'undefined' ) {
+            onoff = true;
+        }
+        this.oApi._fnProcessingDisplay( oSettings, onoff );
+    };
 
-        handleAjaxError = function ( xhr, textStatus, error ) {
+    myAuctions = {
+        init : function () {
+            this.oTable();
+        },
+
+        handleAjaxError : function (xhr, textStatus) {
             if ( textStatus === 'timeout' ) {
-                alert( 'The server took too long to send the data.' );
+                console.log( 'The server took too long to send the data.' );
             }
             else {
-                alert( 'An error occurred on the server. Please try again in a minute.' );
+                console.log( 'An error occurred on the server. Please try again in a minute.' );
             }
-            oTable.fnProcessingIndicator( false );
-        }
+            this.oTable.fnProcessingIndicator( false );
+        },
 
-        oTable = $('#example').dataTable({
-            'bProcessing': true,
-            'bJQueryUI': true,
-            'bStateSave': false,
-            'sPaginationType': 'full_numbers',
-            'bServerSide': true,
-            'sAjaxSource': 'fill/myauctions',
-            'oLanguage': {
-                'sProcessing': jsIndex['sProcessing'],
-                'sLengthMenu': jsIndex['sLengthMenu'],
-                'sZeroRecords': jsIndex['sZeroRecords'],
-                'sInfo': jsIndex['sInfo'],
-                'sInfoEmpty': jsIndex['sInfoEmpty'],
-                'sInfoFiltered': jsIndex['sInfoFiltered'],
-                'sSearch': jsIndex['sSearch'],
-                'sInfoPostFix': '',
-                'sUrl': '',
-                'oPaginate': {
-                    'sFirst': jsIndex['sFirst'],
-                    'sPrevious': jsIndex['sPrevious'],
-                    'sNext': jsIndex['sNext'],
-                    'sLast': jsIndex['sLast']
+        oTable : function() {
+            return $('#example').dataTable({
+                'bProcessing': true,
+                'bJQueryUI': true,
+                'bStateSave': false,
+                'sPaginationType': 'full_numbers',
+                'bServerSide': true,
+                'sAjaxSource': 'fill/myauctions',
+                'oLanguage': {
+                    'sProcessing': translate.sProcessing,
+                    'sLengthMenu': translate.sLengthMenu,
+                    'sZeroRecords': translate.sZeroRecords,
+                    'sInfo': translate.sInfo,
+                    'sInfoEmpty': translate.sInfoEmpty,
+                    'sInfoFiltered': translate.sInfoFiltered,
+                    'sSearch': translate.sSearch,
+                    'sInfoPostFix': '',
+                    'sUrl': '',
+                    'oPaginate': {
+                        'sFirst': translate.sFirst,
+                        'sPrevious': translate.sPrevious,
+                        'sNext': translate.sNext,
+                        'sLast': translate.sLast
+                    }
+                },
+                'fnServerData': function ( sSource, aoData, fnCallback ) {
+                    $.ajax( {
+                        'dataType': 'json',
+                        'type': 'GET',
+                        'url': sSource,
+                        'data': aoData,
+                        'success': fnCallback,
+                        'timeout': 15000,
+                        'error': this.handleAjaxError()
+                    } );
                 }
-            },
-            'fnServerData': function ( sSource, aoData, fnCallback ) {
-                $.ajax( {
-                    'dataType': 'json',
-                    'type': 'GET',
-                    'url': sSource,
-                    'data': aoData,
-                    'success': fnCallback,
-                    'timeout': 15000,
-                    'error': handleAjaxError
-                } );
-            }
-        });
-    });
+            });
+        }
+    };
+
+    return myAuctions;
+
 });

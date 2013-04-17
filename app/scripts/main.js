@@ -8,6 +8,9 @@ require.config({
         bootstrap: {
             deps: ['jquery'],
             exports: 'jquery'
+        },
+        datatables: {
+            deps: ['jquery']
         }
     }
 });

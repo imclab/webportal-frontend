@@ -2,7 +2,7 @@
 
 define(['jquery','datatables'], function ($) {
     'use strict';
-
+/*
     $(document).ready(function () {
 
         $(function () {
@@ -23,4 +23,5 @@ define(['jquery','datatables'], function ($) {
             this.oApi._fnProcessingDisplay( oSettings, onoff );
         };
     });
+*/
 });

@@ -2,7 +2,7 @@
 
 define(['jquery'], function ($) {
     'use strict';
-
+/*
     $(document).ready(function () {
         var loginform = function(form) {
             $.ajax({
@@ -26,4 +26,5 @@ define(['jquery'], function ($) {
             return false;
         };
     });
+*/
 });

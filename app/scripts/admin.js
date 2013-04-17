@@ -1,60 +1,67 @@
 /*global define */
 
-define('admin', ['jquery'], function ($) {
+define(['jquery', 'translate'], function ($, translate) {
     'use strict';
 
-    $(document).ready(function () {
-        var handleAjaxError;
-        var oTable;
+    var admin;
 
-        handleAjaxError = function ( xhr, textStatus ) {
+    admin = {
+        init : function () {
+            this.oTable();
+        },
+
+        handleAjaxError : function ( xhr, textStatus ) {
             if ( textStatus === 'timeout' ) {
-                alert( 'The server took too long to send the data.' );
+                console.log( 'The server took too long to send the data.' );
             }
             else {
-                alert( 'An error occurred on the server. Please try again in a minute.' );
+                console.log( 'An error occurred on the server. Please try again in a minute.' );
             }
-            oTable.fnProcessingIndicator( false );
-        };
+            this.oTable.fnProcessingIndicator( false );
+        },
 
-        oTable = $('#mainTable').dataTable({
-            'bProcessing': true,
-            'bJQueryUI': true,
-            'bStateSave': false,
-            'bDestroy': true,
-            'oSearch': { 'sSearch': '' },
-            'sPaginationType': 'full_numbers',
-            'bServerSide': true,
-            'sAjaxSource': 'web/adminshoplist',
-            'oLanguage': {
-                'sProcessing': jsIndex['sProcessing'],
-                'sLengthMenu': jsIndex['sLengthMenu'],
-                'sZeroRecords': jsIndex['sZeroRecords'],
-                'sInfo': jsIndex['sInfo'],
-                'sInfoEmpty': jsIndex['sInfoEmpty'],
-                'sInfoFiltered': jsIndex['sInfoFiltered'],
-                'sSearch': jsIndex['sSearch'],
-                'sInfoPostFix': '',
-                'sUrl': '',
-                'oPaginate': {
-                    'sFirst': jsIndex['sFirst'],
-                    'sPrevious': jsIndex['sPrevious'],
-                    'sNext': jsIndex['sNext'],
-                    'sLast': jsIndex['sLast']
+        oTable : function() {
+            return $('#mainTable').dataTable({
+                'bProcessing': true,
+                'bJQueryUI': true,
+                'bStateSave': false,
+                'bDestroy': true,
+                'oSearch': { 'sSearch': '' },
+                'sPaginationType': 'full_numbers',
+                'bServerSide': true,
+                'sAjaxSource': 'web/adminshoplist',
+                'oLanguage': {
+                    'sProcessing': translate.sProcessing,
+                    'sLengthMenu': translate.sLengthMenu,
+                    'sZeroRecords': translate.sZeroRecords,
+                    'sInfo': translate.sInfo,
+                    'sInfoEmpty': translate.sInfoEmpty,
+                    'sInfoFiltered': translate.sInfoFiltered,
+                    'sSearch': translate.sSearch,
+                    'sInfoPostFix': '',
+                    'sUrl': '',
+                    'oPaginate': {
+                        'sFirst': translate.sFirst,
+                        'sPrevious': translate.sPrevious,
+                        'sNext': translate.sNext,
+                        'sLast': translate.sLast
+                    }
+                },
+                'fnServerData': function ( sSource, aoData, fnCallback ) {
+                    $.ajax({
+                        'dataType': 'json',
+                        'type': 'GET',
+                        'url': sSource,
+                        'data': aoData,
+                        'success': fnCallback,
+                        'timeout': 15000,
+                        'error': this.handleAjaxError()
+                    });
                 }
-            },
-            'fnServerData': function ( sSource, aoData, fnCallback ) {
-                $.ajax( {
-                    'dataType': 'json',
-                    'type': 'GET',
-                    'url': sSource,
-                    'data': aoData,
-                    'success': fnCallback,
-                    'timeout': 15000,
-                    'error': handleAjaxError
-                } );
-            }
-        });
-    });
+            });
+        }
+    };
+
+    return admin;
 
 });
