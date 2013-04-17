@@ -1,8 +1,7 @@
 /* global define */
-/* global $ */
-/* jshint strict: false */
-/* jshint unused: false */
-define(['jquery'], function () {
+
+define(function ($) {
+    'use strict';
 
     $(document).ready(function () {
         var buy;
@@ -30,6 +29,7 @@ define(['jquery'], function () {
             },
             error: function (data) {
                 $('#user').html('Null');
+                console.log(data);
             },
             dataType: 'text'
         });

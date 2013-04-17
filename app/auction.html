@@ -90,31 +90,6 @@
         <!-- build:js scripts/main.js -->
         <script data-main="scripts/main" src="components/requirejs/require.js"></script>
         <!-- endbuild -->
-
-        <script>
-            define('auction', ['jquery'], function ($) {
-                $(document).ready(function () {
-
-                    $(function () {
-                        $("#tabs").tabs({
-                            load: function(event, ui) {  },
-                            ajaxOptions: {
-                                error: function (xhr, status, index, anchor) {
-                                    $(anchor.hash).html("Couldn't load this tab.");
-                                }
-                            }
-                        });
-                    });
-                
-                    jQuery.fn.dataTableExt.oApi.fnProcessingIndicator = function ( oSettings, onoff ) {
-                        if ( typeof( onoff ) == 'undefined' ) {
-                            onoff = true;
-                        }
-                        this.oApi._fnProcessingDisplay( oSettings, onoff );
-                    };
-                });
-            });
-        </script>
         
     </body>
 </html>
