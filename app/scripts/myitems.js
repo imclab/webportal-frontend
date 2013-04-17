@@ -7,7 +7,7 @@ define(['jquery'], function ($) {
         var oTable;
         var handleAjaxError;
 
-        jQuery.fn.dataTableExt.oApi.fnProcessingIndicator = function ( oSettings, onoff ) {
+        $.fn.dataTableExt.oApi.fnProcessingIndicator = function ( oSettings, onoff ) {
             if ( typeof( onoff ) == 'undefined' ) {
                 onoff = true;
             }

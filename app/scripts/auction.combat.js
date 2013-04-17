@@ -56,4 +56,4 @@ define(['jquery'], function ($) {
         oTable.fnProcessingIndicator( false );
     }
 
-};
+});

@@ -56,4 +56,5 @@ define('admin', ['jquery'], function ($) {
             }
         });
     });
+
 });

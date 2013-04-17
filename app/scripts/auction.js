@@ -7,17 +7,17 @@ define(['jquery','datatables'], function ($) {
 
         $(function () {
             $('#tabs').tabs({
-                load: function(event, ui) {  },
+                load: function() { },
                 ajaxOptions: {
                     error: function (xhr, status, index, anchor) {
-                        $(anchor.hash).html("Couldn't load this tab.");
+                        $(anchor.hash).html('Couldn&#39t load this tab.');
                     }
                 }
             });
         });
 
-        jQuery.fn.dataTableExt.oApi.fnProcessingIndicator = function ( oSettings, onoff ) {
-            if ( typeof( onoff ) == 'undefined' ) {
+        $.fn.dataTableExt.oApi.fnProcessingIndicator = function ( oSettings, onoff ) {
+            if ( typeof( onoff ) === 'undefined' ) {
                 onoff = true;
             }
             this.oApi._fnProcessingDisplay( oSettings, onoff );
