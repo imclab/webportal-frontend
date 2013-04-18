@@ -17,4 +17,6 @@ Anyone and everyone is welcome to contribute.
 - [Pull requests](https://github.com/necolas/issue-guidelines/blob/master/CONTRIBUTING.md#pull-requests)
 
 ## Build
-- `grunt`
+1. install [bower](http://twitter.github.io/bower/), [grunt](http://gruntjs.com/), [compass](http://compass-style.org/)
+1. `npm install && bower install`
+1. `grunt`
