@@ -5,7 +5,6 @@ define(['jquery', 'translate'], function ($, translate) {
 
     var auctionMaterials;
 
-
     auctionMaterials = {
         init : function() {
             for (var prop in translate) {

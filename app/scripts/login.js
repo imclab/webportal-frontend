@@ -1,25 +1,33 @@
 /*global define */
 
-define(['jquery'], function ($) {
+define(['jquery', 'bootstrap'], function ($) {
     'use strict';
 
     var login;
 
     login = {
         init : function () {
-            this.loginForm();
+            this.bindEvents();
         },
 
-        loginForm : function (form) {
+        bindEvents : function () {
+            var that = this;
+            $('#loginForm').submit( function( event ) {
+                event.preventDefault();
+                that.login(this);
+            });
+        },
+
+        login : function (form) {
             $.ajax({
-                url: form.action,
+                type: 'get',
+                url: '/web/login',
                 data: $(form).serialize(),
                 success: function (data) {
                     if (data === 'ok') {
                         window.location = '/index.html';
                     } else if (data === 'no') {
-                        $('#error').show();
-                        $('#error').html('Error try to login maybe:<br/> The username must be case sensitive<br/>or<br/>check password');
+                        $('#alert').show();
                     } else {
 
                     }
