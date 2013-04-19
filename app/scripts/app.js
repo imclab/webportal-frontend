@@ -4,7 +4,7 @@ define([
     'jquery',
     'admin',
     'auction',
-    'helper/info',
+    'views/table',
     'login',
     'myauctions',
     'myitems'
@@ -12,7 +12,7 @@ define([
     $,
     admin,
     auction,
-    info,
+    table,
     login,
     myAuctions,
     myItems

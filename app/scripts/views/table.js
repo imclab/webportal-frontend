@@ -202,6 +202,6 @@ define(['jquery'], function ($) {
 
     };
 
-    return info;
+    return table;
 
 });

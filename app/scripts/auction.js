@@ -12,7 +12,7 @@ define([
     'auction.redstone',
     'auction.tools',
     'auction.transportation',
-    'helper/info',
+    'views/table',
     'datatables',
     'jqueryui'
 ], function (
