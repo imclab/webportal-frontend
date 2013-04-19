@@ -49,7 +49,7 @@ define(['jquery', 'translate'], function ($, translate) {
                         'data': aoData,
                         'success': fnCallback,
                         'timeout': 15000,
-                        'error': this.handleAjaxError()
+                        'error': this.handleAjaxError
                     } );
                 }
             });

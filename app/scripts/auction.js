@@ -12,7 +12,7 @@ define([
     'auction.redstone',
     'auction.tools',
     'auction.transportation',
-    'info',
+    'helper/info',
     'datatables',
     'jqueryui'
 ], function (
@@ -48,36 +48,36 @@ define([
             this.loadTabs();
 
             switch (tab) {
-                case 'block':
-                    auctionBlock.init();
-                    break;
-                case 'combat':
-                    auctionCombat.init();
-                    break;
-                case 'decoration' :
-                    auctionDecoration.init();
-                    break;
-                case 'food' :
-                    auctionFood.init();
-                    break;
-                case 'materials' :
-                    auctionMaterials.init();
-                    break;
-                case 'micellaneous' :
-                    auctionMicellaneous.init();
-                    break;
-                case 'others' :
-                    auctionOthers.init();
-                    break;
-                case 'redstone' :
-                    auctionRedstone.init();
-                    break;
-                case 'tools' :
-                    auctionTools.init();
-                    break;
-                case 'transportation' :
-                    auctionTransportation.init();
-                    break;
+            case 'block':
+                auctionBlock.init();
+                break;
+            case 'combat':
+                auctionCombat.init();
+                break;
+            case 'decoration' :
+                auctionDecoration.init();
+                break;
+            case 'food' :
+                auctionFood.init();
+                break;
+            case 'materials' :
+                auctionMaterials.init();
+                break;
+            case 'micellaneous' :
+                auctionMicellaneous.init();
+                break;
+            case 'others' :
+                auctionOthers.init();
+                break;
+            case 'redstone' :
+                auctionRedstone.init();
+                break;
+            case 'tools' :
+                auctionTools.init();
+                break;
+            case 'transportation' :
+                auctionTransportation.init();
+                break;
             }
         },
 

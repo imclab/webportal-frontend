@@ -1,35 +1,20 @@
 /* global define */
 
-define(function ($) {
+define(['jquery'], function ($) {
     'use strict';
 
-    var info;
+    var table;
 
-    info = {
+    table = {
         init : function() {
-            this.getUserData();
+            this.bindEvents();
         },
 
-        getUserData : function() {
-            $.ajax({
-                url: '/server/username/info',
-                success: function (data) {
-                    try {
-                        var vals = data.split(',');
-                        $('#user').html(vals[0] + vals[1]);
-                        $('#money').html(vals[2]);
-                        $('#mail').html(vals[3]);
-                        $('#avatarimg').attr('src', 'http://minotar.net/avatar/' + vals[0]);
-
-                    } catch (err) {
-                        $('#user').html(err);
-                    }
-                },
-                error: function (data) {
-                    $('#user').html('Null');
-                    console.log(data);
-                },
-                dataType: 'text'
+        bindEvents : function () {
+            var that = this;
+            $('#loginForm').submit( function( event ) {
+                event.preventDefault();
+                that.login(this);
             });
         },
 
@@ -125,7 +110,7 @@ define(function ($) {
         },
 
         adminshop : function (form) {
-            var ar = $(form).serializeArray();
+            //var ar = $(form).serializeArray();
             $.ajax({
                 url: form.action,
                 data: $(form).serialize(),

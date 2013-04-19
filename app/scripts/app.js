@@ -4,7 +4,7 @@ define([
     'jquery',
     'admin',
     'auction',
-    'info',
+    'helper/info',
     'login',
     'myauctions',
     'myitems'
@@ -26,25 +26,25 @@ define([
             console.log(location);
 
             switch (location) {
-                case 'admin':
-                    admin.init();
-                    break;
-                case 'auction':
-                    auction.init();
-                    break;
-                case 'info' :
-                    info.init();
-                    break;
-                case 'login' :
-                    login.init();
-                    break;
-                case 'myauctions' :
-                    myAuctions.init();
-                    break;
-                case 'myitems' :
-                    console.log(location);
-                    myItems.init();
-                    break;
+            case 'admin':
+                admin.init();
+                break;
+            case 'auction':
+                auction.init();
+                break;
+            case 'info' :
+                info.init();
+                break;
+            case 'login' :
+                login.init();
+                break;
+            case 'myauctions' :
+                myAuctions.init();
+                break;
+            case 'myitems' :
+                console.log(location);
+                myItems.init();
+                break;
             }
         },
 

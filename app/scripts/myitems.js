@@ -3,6 +3,8 @@
 define(['jquery', 'translate', 'datatables'], function ($, translate) {
     'use strict';
 
+    var myItems;
+
     $.fn.dataTableExt.oApi.fnProcessingIndicator = function ( oSettings, onoff ) {
         if (typeof(onoff) === 'undefined') {
             onoff = true;
@@ -10,7 +12,7 @@ define(['jquery', 'translate', 'datatables'], function ($, translate) {
         this.oApi._fnProcessingDisplay( oSettings, onoff );
     };
 
-    var myItems = {
+    myItems = {
         init: function () {
             this.oTable();
         },
@@ -58,7 +60,7 @@ define(['jquery', 'translate', 'datatables'], function ($, translate) {
                         'data': aoData,
                         'success': fnCallback,
                         'timeout': 15000,
-                        'error': this.handleAjaxError()
+                        'error': this.handleAjaxError
                     } );
                 }
             });
