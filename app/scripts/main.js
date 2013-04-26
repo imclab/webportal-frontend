@@ -23,7 +23,7 @@ require(['app', 'jquery', 'translate'], function (app, $, translate) {
     'use strict';
 
     $(document).ready(function () {
-        var replaceText = function () {
+        var translateUI = function () {
             var prop;
             var patt;
             for (prop in translate) {
@@ -31,7 +31,7 @@ require(['app', 'jquery', 'translate'], function (app, $, translate) {
                 $('.js-wrapper').html($('.js-wrapper').html().replace(patt, translate[prop]));
             }
         };
-        replaceText();
+        translateUI();
         app.init();
     });
 });

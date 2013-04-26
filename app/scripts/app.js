@@ -32,17 +32,17 @@ define([
             case 'auction':
                 auction.init();
                 break;
-            case 'info' :
-                info.init();
+            case 'table' :
+                table.init();
                 break;
             case 'login' :
+            case '' :
                 login.init();
                 break;
             case 'myauctions' :
                 myAuctions.init();
                 break;
             case 'myitems' :
-                console.log(location);
                 myItems.init();
                 break;
             }

@@ -7,11 +7,8 @@ define(['jquery', 'translate'], function ($, translate) {
 
     auctionMicellaneous = {
         init : function() {
-            for (var prop in translate) {
-                var patt = new RegExp(prop, 'g');
-                $('#mainTable4').html($('#mainTable4').html().replace(patt, translate[prop]));
-            }
             this.oTable();
+            this.translateUI();
         },
 
         oTable : function() {
@@ -54,6 +51,7 @@ define(['jquery', 'translate'], function ($, translate) {
                 }
             });
         },
+
         handleAjaxError : function( xhr, textStatus ) {
             if ( textStatus === 'timeout' ) {
                 console.log( 'The server took too long to send the data.' );
@@ -62,6 +60,15 @@ define(['jquery', 'translate'], function ($, translate) {
                 console.log( 'An error occurred on the server. Please try again in a minute.' );
             }
             this.oTable.fnProcessingIndicator( false );
+        },
+
+        translateUI : function () {
+            var prop;
+            var patt;
+            for (prop in translate) {
+                patt = new RegExp(prop, 'g');
+                $('#mainTable4').html($('#mainTable').html().replace(patt, translate[prop]));
+            }
         }
     };
 

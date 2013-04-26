@@ -2,7 +2,8 @@
 
 define([
     'jquery',
-    'auction.block',
+    'translate',
+    'auction.blocks',
     'auction.combat',
     'auction.decoration',
     'auction.food',
@@ -17,7 +18,8 @@ define([
     'jqueryui'
 ], function (
     $,
-    auctionBlock,
+    translate,
+    auctionBlocks,
     auctionCombat,
     auctionDecoration,
     auctionFood,
@@ -41,55 +43,53 @@ define([
 
     auction = {
         init : function() {
-            var tab;
-            //tab = this.getTab();
-            console.log(tab);
-
+            this.bindEvent();
             this.loadTabs();
-
-            switch (tab) {
-            case 'block':
-                auctionBlock.init();
-                break;
-            case 'combat':
-                auctionCombat.init();
-                break;
-            case 'decoration' :
-                auctionDecoration.init();
-                break;
-            case 'food' :
-                auctionFood.init();
-                break;
-            case 'materials' :
-                auctionMaterials.init();
-                break;
-            case 'micellaneous' :
-                auctionMicellaneous.init();
-                break;
-            case 'others' :
-                auctionOthers.init();
-                break;
-            case 'redstone' :
-                auctionRedstone.init();
-                break;
-            case 'tools' :
-                auctionTools.init();
-                break;
-            case 'transportation' :
-                auctionTransportation.init();
-                break;
-            }
         },
 
-        getTab : function() {
-            var tab = 'block';
-            return tab;
+        bindEvent : function() {
+            $('#tabs').on('tabsload', function(event) {
+                var currentTab = event.toElement.text;
+
+                switch (currentTab) {
+                case 'Blocks':
+                    auctionBlocks.init();
+                    break;
+                case 'Combat':
+                    auctionCombat.init();
+                    break;
+                case 'Decoration' :
+                    auctionDecoration.init();
+                    break;
+                case 'Food' :
+                    auctionFood.init();
+                    break;
+                case 'Materials' :
+                    auctionMaterials.init();
+                    break;
+                case 'Micellaneous' :
+                    auctionMicellaneous.init();
+                    break;
+                case 'Others' :
+                    auctionOthers.init();
+                    break;
+                case 'Redstone' :
+                    auctionRedstone.init();
+                    break;
+                case 'Tools' :
+                    auctionTools.init();
+                    break;
+                case 'Transportation' :
+                    auctionTransportation.init();
+                    break;
+                }
+            }).tabs();
         },
 
         loadTabs : function() {
             $(function () {
                 $('#tabs').tabs({
-                    load: function() { },
+                    load: function () {},
                     ajaxOptions: {
                         error: function (xhr, status, index, anchor) {
                             $(anchor.hash).html('Couldn&#39t load this tab.');
@@ -98,7 +98,6 @@ define([
                 });
             });
         }
-
     };
 
     return auction;

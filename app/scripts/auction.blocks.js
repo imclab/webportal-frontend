@@ -3,15 +3,12 @@
 define(['jquery', 'translate'], function ($, translate) {
     'use strict';
 
-    var auctionBlock;
+    var auctionBlocks;
 
-    auctionBlock = {
+    auctionBlocks = {
         init : function() {
-            for (var prop in translate) {
-                var patt = new RegExp(prop, 'g');
-                $('#mainTable').html($('#mainTable').html().replace(patt, translate[prop]));
-            }
             this.oTable();
+            this.translateUI();
         },
 
         oTable : function() {
@@ -63,10 +60,18 @@ define(['jquery', 'translate'], function ($, translate) {
                 console.log( 'An error occurred on the server. Please try again in a minute.' );
             }
             this.oTable.fnProcessingIndicator( false );
-        }
+        },
 
+        translateUI : function () {
+            var prop;
+            var patt;
+            for (prop in translate) {
+                patt = new RegExp(prop, 'g');
+                $('#mainTable').html($('#mainTable').html().replace(patt, translate[prop]));
+            }
+        }
     };
 
-    return auctionBlock;
+    return auctionBlocks;
 
 });
