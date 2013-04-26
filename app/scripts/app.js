@@ -7,7 +7,9 @@ define([
     'views/table',
     'login',
     'myauctions',
-    'myitems'
+    'myitems',
+    'helpers/datatables.bootstrap',
+    'helpers/datatables.numericsort'
 ], function (
     $,
     admin,
