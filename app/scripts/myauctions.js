@@ -29,10 +29,12 @@ define(['jquery', 'translate', 'datatables'], function ($, translate) {
 
         oTable : function() {
             return $('#example').dataTable({
+                'sDom': '<"row"<"span6"l><"span6"f>r>t<"row"<"span6"i><"span6"p>>',
+                'sPaginationType': 'bootstrap',
                 'bProcessing': true,
                 'bJQueryUI': true,
                 'bStateSave': false,
-                'sPaginationType': 'full_numbers',
+                //'sPaginationType': 'full_numbers',
                 'bServerSide': true,
                 'sAjaxSource': 'fill/myauctions',
                 'oLanguage': {

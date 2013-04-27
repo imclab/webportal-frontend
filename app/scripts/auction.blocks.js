@@ -13,12 +13,14 @@ define(['jquery', 'translate'], function ($, translate) {
 
         oTable : function() {
             return $('#mainTable').dataTable({
+                'sDom': '<"row"<"span6"l><"span6"f>r>t<"row"<"span6"i><"span6"p>>',
+                'sPaginationType': 'bootstrap',
                 'bProcessing': true,
                 'bJQueryUI': true,
                 'bStateSave': false,
                 'bDestroy': true,
                 'oSearch': { 'sSearch': '' },
-                'sPaginationType': 'full_numbers',
+                //'sPaginationType': 'full_numbers',
                 'bServerSide': true,
                 'sAjaxSource': 'fill/auction/byblock',
                 'oLanguage': {

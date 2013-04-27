@@ -83,7 +83,7 @@ define(['jquery', 'datatables'], function ($) {
 					// Add the new list items and their event handlers
 					for ( j=iStart ; j<=iEnd ; j++ ) {
 						sClass = (j===oPaging.iPage+1) ? 'class="active"' : '';
-						$('<li '+sClass+'><a href="#"">'+j+'</a></li>')
+						$('<li '+sClass+'><a href="#">'+j+'</a></li>')
 							.insertBefore( $('li:last', an[i])[0] )
 							.bind('click', function (e) {
 								e.preventDefault();
@@ -148,6 +148,7 @@ define(['jquery', 'datatables'], function ($) {
 
 	/* Table initialisation */
 	$(document).ready(function() {
+		/*
 		$('#example').dataTable( {
 			'sDom': '<"row"<"span6"l><"span6"f>r>t<"row"<"span6"i><"span6"p>>',
 			'sPaginationType': 'bootstrap',
@@ -155,6 +156,7 @@ define(['jquery', 'datatables'], function ($) {
 				'sLengthMenu': '_MENU_ records per page'
 			}
 		} );
+		*/
 	} );
 
 });
