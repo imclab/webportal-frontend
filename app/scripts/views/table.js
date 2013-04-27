@@ -1,41 +1,24 @@
 /* global define */
-/* global $ */
-/* jshint strict: false */
-/* jshint unused: false */
-define(['jquery'], function () {
 
-    $(document).ready(function () {
-        var buy;
-        var del;
-        var adm;
-        var postauction;
-        var adminshop;
-        var mail;
-        var cancel;
-        var box;
+define(['jquery'], function ($) {
+    'use strict';
 
-        $.ajax({
-            url: '/server/username/info',
-            success: function (data) {
-                try {
-                    var vals = data.split(',');
-                    $('#user').html(vals[0] + vals[1]);
-                    $('#money').html(vals[2]);
-                    $('#mail').html(vals[3]);
-                    $('#avatarimg').attr('src', 'http://minotar.net/avatar/' + vals[0]);
+    var table;
 
-                } catch (err) {
-                    $('#user').html(err);
-                }
-            },
-            error: function (data) {
-                $('#user').html('Null');
-            },
-            dataType: 'text'
-        });
+    table = {
+        init : function() {
+            this.bindEvents();
+        },
 
+        bindEvents : function () {
+            var that = this;
+            $('#loginForm').submit( function( event ) {
+                event.preventDefault();
+                that.login(this);
+            });
+        },
 
-        buy = function (form) {
+        buy : function (form) {
             var ar = $(form).serializeArray();
             $.ajax({
                 url: form.action,
@@ -52,15 +35,15 @@ define(['jquery'], function () {
                     }
                 },
                 error: function (error) {
-
+                    console.log(error);
                 },
                 dataType: 'text'
             });
 
             return false;
-        };
+        },
 
-        del =  function (form) {
+        del :  function (form) {
             var ar = $(form).serializeArray();
             $.ajax({
                 url: form.action,
@@ -77,15 +60,15 @@ define(['jquery'], function () {
                     }
                 },
                 error: function (error) {
-
+                    console.log(error);
                 },
                 dataType: 'text'
             });
 
             return false;
-        };
+        },
 
-        adm = function (form) {
+        adm : function (form) {
             $.ajax({
                 url: form.action,
                 data: $(form).serialize(),
@@ -99,9 +82,9 @@ define(['jquery'], function () {
             });
 
             return false;
-        };
+        },
 
-        postauction =  function (form) {
+        postauction :  function (form) {
             var ar = $(form).serializeArray();
             $.ajax({
                 url: form.action,
@@ -118,16 +101,16 @@ define(['jquery'], function () {
                     }
                 },
                 error: function (error) {
-
+                    console.log(error);
                 },
                 dataType: 'text'
             });
 
             return false;
-        };
+        },
 
-        adminshop = function (form) {
-            var ar = $(form).serializeArray();
+        adminshop : function (form) {
+            //var ar = $(form).serializeArray();
             $.ajax({
                 url: form.action,
                 data: $(form).serialize(),
@@ -143,15 +126,15 @@ define(['jquery'], function () {
                     }
                 },
                 error: function (error) {
-
+                    console.log(error);
                 },
                 dataType: 'text'
             });
 
             return false;
-        };
+        },
 
-        mail = function (form) {
+        mail : function (form) {
             var ar = $(form).serializeArray();
             $.ajax({
                 url: form.action,
@@ -168,9 +151,9 @@ define(['jquery'], function () {
             });
 
             return false;
-        };
+        },
 
-        cancel = function (form) {
+        cancel : function (form) {
             var ar = $(form).serializeArray();
             $.ajax({
                 url: form.action,
@@ -187,9 +170,9 @@ define(['jquery'], function () {
             });
 
             return false;
-        };
+        },
 
-        box = function() {
+        box : function() {
             $.ajax({
                 url: '/box/1',
                 success: function (data) {
@@ -215,6 +198,10 @@ define(['jquery'], function () {
                     $('#box2').html(error);
                 },
             });
-        };
-    });
+        }
+
+    };
+
+    return table;
+
 });

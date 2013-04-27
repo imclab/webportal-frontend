@@ -1,0 +1,7 @@
+<form action='web/postauction' method='GET' onsubmit='return postauction(this)'>
+    Quantity: <input type='text' name='Quantity' onKeyPress='return numbersonly(this, event);' class='input' /><br />
+    <input type='hidden' name='ID' value='"+ID+"' />
+    Price: <input name='Price' type='text' onKeyPress='return numbersonly(this, event);' class='input' size='10' /><br />
+    <input type='submit' value='" + plugin.Messages.get("CreateAuction") + "' class='button' />
+</form>
+<span id='"+ID+"'></span>

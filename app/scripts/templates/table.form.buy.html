@@ -1,0 +1,6 @@
+<form action='buy/item' method='GET' onsubmit='return buy(this)'>
+    <input type='text' name='Quantity' onKeyPress='return numbersonly(this, event);' class='input' />
+    <input type='hidden' name='ID' value='"+ID+"' />
+    <input type='submit' value='" + plugin.Messages.get("Buy") + "' class='button' />
+</form>
+<span id='"+ID+"'></span>

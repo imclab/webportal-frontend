@@ -1,6 +1,7 @@
 require.config({
     paths: {
         jquery: '../components/jquery/jquery',
+        jqueryui: '../components/jquery-ui/ui/jquery-ui.custom',
         datatables: '../components/datatables/media/js/jquery.dataTables',
         bootstrap: 'vendor/bootstrap'
     },
@@ -8,15 +9,21 @@ require.config({
         bootstrap: {
             deps: ['jquery'],
             exports: 'jquery'
+        },
+        jqueryui: {
+            deps: ['jquery']
+        },
+        datatables: {
+            deps: ['jquery']
         }
     }
 });
 
-require(['app', 'jquery', 'translate', 'bootstrap', 'datatables', 'datatables.numericSort'], function (app, $, translate) {
+require(['app', 'jquery', 'translate'], function (app, $, translate) {
     'use strict';
+
     $(document).ready(function () {
-        var location;
-        var replaceText = function () {
+        var translateUI = function () {
             var prop;
             var patt;
             for (prop in translate) {
@@ -24,7 +31,7 @@ require(['app', 'jquery', 'translate', 'bootstrap', 'datatables', 'datatables.nu
                 $('.js-wrapper').html($('.js-wrapper').html().replace(patt, translate[prop]));
             }
         };
-        replaceText();
-        location = $(location).attr('pathname');
+        translateUI();
+        app.init();
     });
 });

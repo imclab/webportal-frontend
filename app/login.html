@@ -22,7 +22,7 @@
                     <div class="login-form well">
                         <h2>lang1SvName :: Login</h2>
                         <p>langWarning</p>
-                        <form action="/web/login" method="get" name="login" onsubmit="return loginform(this)">
+                        <form id="loginForm">
                             <fieldset>
                                 <div class="clearfix">
                                     <input name="Username" type="text" placeholder="langUsername">
@@ -33,7 +33,11 @@
                                 <button class="btn primary" type="submit">Sign in</button>
                             </fieldset>
                         </form>
-                        <div id="error" class=""></div>
+                        <div class="alert alert-block hide" id="alert">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            <h4>Warning!</h4>
+                            <p>Error try to login maybe: The username must be case sensitive or check password</p>
+                        </div>
                         <footer>
                             <p>
                                 Made by Stutiguias. Design by renanslk( or redbull52 ).
@@ -60,34 +64,6 @@
         <!-- build:js scripts/main.js -->
         <script data-main="scripts/main" src="components/requirejs/require.js"></script>
         <!-- endbuild -->
-
-        <script>
-            define('login', ['jquery'], function ($) {
-                $(document).ready(function () {
-                    var loginform = function(form) {
-                        $.ajax({
-                            url: form.action,
-                            data: $(form).serialize(),
-                            success: function (data) {
-                                if (data == "ok") {
-                                    window.location = '/index.html';
-                                } else if (data == "no") {
-                                    $('#error').show();
-                                    $('#error').html('Error try to login maybe:<br/> The username must be case sensitive<br/>or<br/>check password');
-                                } else {
-
-                                }
-                            },
-                            error: function (error) {
-
-                            },
-                            dataType: "text"
-                        });
-                        return false;
-                    };
-                });
-            });
-        </script>
 
     </body>
 </html>
