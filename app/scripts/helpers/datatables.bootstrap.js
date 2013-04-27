@@ -18,8 +18,7 @@ define(['jquery', 'datatables'], function ($) {
 	} );
 
 	/* API method to get paging information */
-	$.fn.dataTableExt.oApi.fnPagingInfo = function ( oSettings )
-	{
+	$.fn.dataTableExt.oApi.fnPagingInfo = function ( oSettings ) {
 		return {
 			'iStart':         oSettings._iDisplayStart,
 			'iEnd':           oSettings.fnDisplayEnd(),
@@ -145,18 +144,5 @@ define(['jquery', 'datatables'], function ($) {
 			}
 		} );
 	}
-
-	/* Table initialisation */
-	$(document).ready(function() {
-		/*
-		$('#example').dataTable( {
-			'sDom': '<"row"<"span6"l><"span6"f>r>t<"row"<"span6"i><"span6"p>>',
-			'sPaginationType': 'bootstrap',
-			'oLanguage': {
-				'sLengthMenu': '_MENU_ records per page'
-			}
-		} );
-		*/
-	} );
 
 });

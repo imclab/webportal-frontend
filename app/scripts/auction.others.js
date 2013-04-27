@@ -18,7 +18,7 @@ define(['jquery', 'translate'], function ($, translate) {
                 'bStateSave': false,
                 'bDestroy': true,
                 'oSearch': { 'sSearch': '' },
-                'sPaginationType': 'full_numbers',
+                //'sPaginationType': 'full_numbers',
                 'bServerSide': true,
                 'sAjaxSource': 'fill/auction/byothers',
                 'oLanguage': {
