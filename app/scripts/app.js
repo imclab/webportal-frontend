@@ -2,19 +2,17 @@
 
 define([
     'jquery',
-    'admin',
-    'auction',
-    'views/table',
-    'login',
-    'myauctions',
-    'myitems',
+    'views/admin',
+    'views/auction',
+    'views/login',
+    'views/myauctions',
+    'views/myitems',
     'helpers/datatables.bootstrap',
     'helpers/datatables.numericsort'
 ], function (
     $,
     admin,
     auction,
-    table,
     login,
     myAuctions,
     myItems
@@ -33,9 +31,6 @@ define([
                 break;
             case 'auction':
                 auction.init();
-                break;
-            case 'table' :
-                table.init();
                 break;
             case 'login' :
             case '' :

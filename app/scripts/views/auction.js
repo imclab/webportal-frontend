@@ -2,14 +2,12 @@
 
 define([
     'jquery',
-    'translate',
     'views/user',
     'helpers/datatables.getdata',
     'helpers/datatables.config',
     'bootstrap'
 ], function (
     $,
-    translate,
     user,
     datatablesGetdata
 ) {
