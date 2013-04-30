@@ -35,7 +35,7 @@ define([
                 });
             });
 
-            $('#buyItemsForm').submit( function( e ) {
+            $('.js-buyItems').submit( function( e ) {
                 e.preventDefault();
                 self.buy(this);
             });

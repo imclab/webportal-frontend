@@ -26,7 +26,7 @@ define([
 
         bindEvents : function () {
             var self = this;
-            $('#cancelAuctionForm').submit( function( e ) {
+            $('.js-cancelAuction').submit( function( e ) {
                 e.preventDefault();
                 self.cancelAuction(this);
             });

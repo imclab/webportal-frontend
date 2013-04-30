@@ -35,7 +35,7 @@ define([
                 e.preventDefault();
                 self.adminShop(this);
             });
-            $('#adminShopDeleteForm').submit( function( e ) {
+            $('.js-adminShopDelete').submit( function( e ) {
                 e.preventDefault();
                 self.adminShopDelete(this);
             });

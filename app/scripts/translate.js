@@ -80,9 +80,7 @@ define([], function () {
         'langOthers': 'Others',
 
         ///////////////////////////////////////////////
-        //
         //   Language for login.html
-        //
         ///////////////////////////////////////////////
 
         'langWarning': 'Create an account by typing /wa password [Your Password] on the server!',

@@ -26,12 +26,12 @@ define([
 
         bindEvents : function () {
             var self = this;
-            $('#postAuctionForm').submit( function( e ) {
+            $('.js-postAuction').submit( function( e ) {
                 e.preventDefault();
                 self.postAuction(this);
             });
 
-            $('#mailItemsForm').submit( function( e ) {
+            $('.js-mailItems').submit( function( e ) {
                 e.preventDefault();
                 self.mailItems(this);
             });
