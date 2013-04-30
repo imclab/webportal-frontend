@@ -12,8 +12,8 @@ define(['jquery', 'bootstrap'], function ($) {
 
         bindEvents : function () {
             var that = this;
-            $('#loginForm').submit( function( event ) {
-                event.preventDefault();
+            $('#loginForm').submit( function( e ) {
+                e.preventDefault();
                 that.login(this);
             });
         },

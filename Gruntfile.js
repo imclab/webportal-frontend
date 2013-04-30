@@ -226,6 +226,14 @@ module.exports = function (grunt) {
                 }]
             }
         },
+        cssjoin: {
+            'path_option': {
+                options: {
+                    paths : ['<%= yeoman.app %>/']
+                },
+                files:  grunt.file.expandMapping(['.tmp/**/*.css']),
+            }
+        },
         cssmin: {
             dist: {
                 files: {
@@ -330,6 +338,7 @@ module.exports = function (grunt) {
         'useminPrepare',
         'concurrent:dist',
         'requirejs',
+        'cssjoin',
         'cssmin',
         'concat',
         'uglify',
@@ -343,4 +352,5 @@ module.exports = function (grunt) {
         'test',
         'build'
     ]);
+
 };

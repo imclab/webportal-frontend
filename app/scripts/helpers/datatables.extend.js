@@ -3,24 +3,28 @@
 define(['jquery', 'translate'], function ($, translate) {
     'use strict';
 
-    var auctionBlocks;
+    var datatablesExtend;
 
-    auctionBlocks = {
-        init : function() {
-            this.oTable();
-            this.translateUI();
+    datatablesExtend = {
+        init : function(tableId) {
+            var ajaxSource;
+            ajaxSource = 'fill/auction/by' + tableId;
+            console.log(ajaxSource);
+            tableId = '#' + tableId +'Table';
+            console.log(tableId);
+            this.oTable(tableId, ajaxSource);
         },
 
-        oTable : function() {
-            return $('#mainTable').dataTable({
+        oTable : function(tableId, ajaxSource) {
+            return $(tableId).dataTable({
                 'bProcessing': true,
-                'bJQueryUI': true,
+                //'bJQueryUI': true,
                 'bStateSave': false,
                 'bDestroy': true,
                 'oSearch': { 'sSearch': '' },
                 //'sPaginationType': 'full_numbers',
                 'bServerSide': true,
-                'sAjaxSource': 'fill/auction/byblock',
+                'sAjaxSource': ajaxSource,
                 'oLanguage': {
                     'sProcessing': translate.sProcessing,
                     'sLengthMenu': translate.sLengthMenu,
@@ -39,20 +43,20 @@ define(['jquery', 'translate'], function ($, translate) {
                     }
                 },
                 'fnServerData': function ( sSource, aoData, fnCallback ) {
-                    $.ajax( {
+                    $.ajax({
                         'dataType': 'json',
                         'type': 'GET',
                         'url': sSource,
                         'data': aoData,
-                        'success': fnCallback,
-                        'timeout': 15000,
-                        'error': this.handleAjaxError
-                    } );
+                        'timeout': 15000
+                    })
+                    .done(fnCallback)
+                    .fail(this.handleAjaxError);
                 }
             });
         },
 
-        handleAjaxError: function( xhr, textStatus) {
+        handleAjaxError : function( xhr, textStatus) {
             if ( textStatus === 'timeout' ) {
                 console.log( 'The server took too long to send the data.' );
             }
@@ -60,18 +64,9 @@ define(['jquery', 'translate'], function ($, translate) {
                 console.log( 'An error occurred on the server. Please try again in a minute.' );
             }
             this.oTable.fnProcessingIndicator( false );
-        },
-
-        translateUI : function () {
-            var prop;
-            var patt;
-            for (prop in translate) {
-                patt = new RegExp(prop, 'g');
-                $('#mainTable').html($('#mainTable').html().replace(patt, translate[prop]));
-            }
         }
     };
 
-    return auctionBlocks;
+    return datatablesExtend;
 
 });

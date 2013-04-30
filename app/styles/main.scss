@@ -2,7 +2,7 @@ $iconSpritePath: "../images/glyphicons-halflings.png";
 $iconWhiteSpritePath: "../images/glyphicons-halflings-white.png";
 
 @import 'sass-bootstrap/lib/bootstrap';
-@import url('/components/jqueryuibootstrap/css/custom-theme/jquery-ui-1.10.2.custom.css');
+@import 'datatable-bootstrap';
 
 .navbar .brand {
 	padding: 22px 20px;

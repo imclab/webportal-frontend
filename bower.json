@@ -1,0 +1,13 @@
+{
+  "name": "webportal-frontend",
+  "version": "0.0.1",
+  "dependencies": {
+    "sass-bootstrap": "~2.3.0",
+    "requirejs": "~2.1.4",
+    "modernizr": "~2.6.2",
+    "jquery": "~1.9.1",
+    "datatables": "~1.9.4",
+    "jqueryuibootstrap": "latest"
+  },
+  "devDependencies": {}
+}

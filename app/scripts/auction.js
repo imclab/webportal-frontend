@@ -3,32 +3,13 @@
 define([
     'jquery',
     'translate',
-    'auction.blocks',
-    'auction.combat',
-    'auction.decoration',
-    'auction.food',
-    'auction.materials',
-    'auction.micellaneous',
-    'auction.others',
-    'auction.redstone',
-    'auction.tools',
-    'auction.transportation',
+    'helpers/datatables.extend',
     'views/table',
-    'datatables',
-    'jqueryui'
+    'datatables'
 ], function (
     $,
     translate,
-    auctionBlocks,
-    auctionCombat,
-    auctionDecoration,
-    auctionFood,
-    auctionMaterials,
-    auctionMicellaneous,
-    auctionOthers,
-    auctionRedstone,
-    auctionTools,
-    auctionTransportation
+    datatablesExtend
 ) {
     'use strict';
 
@@ -44,60 +25,19 @@ define([
     auction = {
         init : function() {
             this.bindEvent();
-            this.loadTabs();
         },
 
         bindEvent : function() {
-            $('#tabs').on('tabsload', function(event) {
-                var currentTab = event.toElement.text;
+            $('a[data-toggle="tab"]').on('shown', function (e) {
+                var currentTab = e.target.href;
+                currentTab = currentTab.split('#');
+                currentTab = currentTab[1];
 
-                switch (currentTab) {
-                case 'Blocks':
-                    auctionBlocks.init();
-                    break;
-                case 'Combat':
-                    auctionCombat.init();
-                    break;
-                case 'Decoration' :
-                    auctionDecoration.init();
-                    break;
-                case 'Food' :
-                    auctionFood.init();
-                    break;
-                case 'Materials' :
-                    auctionMaterials.init();
-                    break;
-                case 'Micellaneous' :
-                    auctionMicellaneous.init();
-                    break;
-                case 'Others' :
-                    auctionOthers.init();
-                    break;
-                case 'Redstone' :
-                    auctionRedstone.init();
-                    break;
-                case 'Tools' :
-                    auctionTools.init();
-                    break;
-                case 'Transportation' :
-                    auctionTransportation.init();
-                    break;
-                }
-            }).tabs();
+                datatablesExtend.init(currentTab);
+
+            });
         },
 
-        loadTabs : function() {
-            $(function () {
-                $('#tabs').tabs({
-                    load: function () {},
-                    ajaxOptions: {
-                        error: function (xhr, status, index, anchor) {
-                            $(anchor.hash).html('Couldn&#39t load this tab.');
-                        }
-                    }
-                });
-            });
-        }
     };
 
     return auction;
