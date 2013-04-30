@@ -3,6 +3,7 @@
 define([
     'jquery',
     'translate',
+    'views/user',
     'helpers/datatables.getdata',
     'helpers/datatables.config',
     'views/table',
@@ -10,6 +11,7 @@ define([
 ], function (
     $,
     translate,
+    user,
     datatablesGetdata
 ) {
     'use strict';
@@ -19,6 +21,7 @@ define([
     auction = {
         init : function() {
             this.bindEvent();
+            user.init();
         },
 
         bindEvent : function() {

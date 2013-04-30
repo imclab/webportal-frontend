@@ -14,15 +14,18 @@ define(['jquery'], function ($) {
             var that = this;
             $.ajax({
                 url: '/server/username/info',
-                success: that.render,
-                error: that.fetchUserFail,
                 dataType: 'text'
-            });
+            })
+            .done(
+                function(data) { that.render(data); }
+            )
+            .fail(
+                function(data) { that.fetchUserFail(data); }
+            );
         },
 
-        fetchUserFail : function (data) {
+        fetchUserFail : function () {
             $('#user').html('Null');
-            console.log(data);
         },
 
         render : function(data) {
@@ -31,7 +34,7 @@ define(['jquery'], function ($) {
                 $('#user').html(vals[0] + vals[1]);
                 $('#money').html(vals[2]);
                 $('#mail').html(vals[3]);
-                $('#avatarimg').attr('src', 'http://minotar.net/avatar/' + vals[0]);
+                $('#avatar').attr('src', 'http://minotar.net/avatar/' + vals[0]);
             } catch (err) {
                 $('#user').html(err);
             }

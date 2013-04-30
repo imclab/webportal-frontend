@@ -3,11 +3,13 @@
 define([
     'jquery',
     'translate',
+    'views/user',
     'helpers/datatables.getdata',
     'helpers/datatables.config'
 ], function (
     $,
     translate,
+    user,
     datatablesGetdata
 ) {
     'use strict';
@@ -20,6 +22,7 @@ define([
                 'tableId' : '#myItems',
                 'ajaxSource' : 'fill/myitems'
             });
+            user.init();
         }
     };
 

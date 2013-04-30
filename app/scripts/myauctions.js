@@ -4,10 +4,12 @@ define([
     'jquery',
     'translate',
     'helpers/datatables.getdata',
+    'views/user',
     'helpers/datatables.config'
 ], function (
     $,
     translate,
+    user,
     datatablesGetdata
 ) {
     'use strict';
@@ -20,6 +22,7 @@ define([
                 'tableId' : '#myAuctions',
                 'ajaxSource' : 'fill/myauctions'
             });
+            user.init();
         }
     };
 
