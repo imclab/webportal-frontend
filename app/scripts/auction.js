@@ -14,8 +14,7 @@ define([
     'auction.tools',
     'auction.transportation',
     'views/table',
-    'datatables',
-    'jqueryui'
+    'datatables'
 ], function (
     $,
     translate,
@@ -44,60 +43,49 @@ define([
     auction = {
         init : function() {
             this.bindEvent();
-            this.loadTabs();
         },
 
         bindEvent : function() {
-            $('#tabs').on('tabsload', function(event) {
-                var currentTab = event.toElement.text;
+            $('a[data-toggle="tab"]').on('shown', function (e) {
+                var currentTab = e.target.href;
+                currentTab = currentTab.split('#');
+                currentTab = currentTab[1];
 
                 switch (currentTab) {
-                case 'Blocks':
+                case 'blocks':
                     auctionBlocks.init();
                     break;
-                case 'Combat':
+                case 'combat':
                     auctionCombat.init();
                     break;
-                case 'Decoration' :
+                case 'decoration' :
                     auctionDecoration.init();
                     break;
-                case 'Food' :
+                case 'food' :
                     auctionFood.init();
                     break;
-                case 'Materials' :
+                case 'materials' :
                     auctionMaterials.init();
                     break;
-                case 'Micellaneous' :
+                case 'micellaneous' :
                     auctionMicellaneous.init();
                     break;
-                case 'Others' :
+                case 'others' :
                     auctionOthers.init();
                     break;
-                case 'Redstone' :
+                case 'redstone' :
                     auctionRedstone.init();
                     break;
-                case 'Tools' :
+                case 'tools' :
                     auctionTools.init();
                     break;
-                case 'Transportation' :
+                case 'transportation' :
                     auctionTransportation.init();
                     break;
                 }
-            }).tabs();
+            });
         },
 
-        loadTabs : function() {
-            $(function () {
-                $('#tabs').tabs({
-                    load: function () {},
-                    ajaxOptions: {
-                        error: function (xhr, status, index, anchor) {
-                            $(anchor.hash).html('Couldn&#39t load this tab.');
-                        }
-                    }
-                });
-            });
-        }
     };
 
     return auction;

@@ -48,24 +48,234 @@
             </div>
             <div class="container">
                 <h2>lang1Title</h2>
-                <div id="tabs">
-                    <ul>
-                        <li><a href="#tabs-1">Search</a></li>
-                        <li><a href="templates/blocks.html">langBlocks</a></li>
-                        <li><a href="templates/combat.html">langCombat</a></li>
-                        <li><a href="templates/tools.html">langTools</a></li>
-                        <li><a href="templates/food.html">langFood</a></li>
-                        <li><a href="templates/decoration.html">langDecoration</a></li>
-                        <li><a href="templates/redstone.html">langRedstone</a></li>
-                        <li><a href="templates/transportation.html">langTransportation</a></li>
-                        <li><a href="templates/micellaneous.html">langMicellaneous</a></li>
-                        <li><a href="templates/materials.html">langMaterials</a></li>
-                        <li><a href="templates/others.html">langOthers</a></li>
+                    <ul class="nav nav-tabs">
+                        <li><a href="#search" data-toggle="tab">Search</a></li>
+                        <li><a href="#blocks" data-toggle="tab">langBlocks</a></li>
+                        <li><a href="#combat" data-toggle="tab">langCombat</a></li>
+                        <li><a href="#tools" data-toggle="tab">langTools</a></li>
+                        <li><a href="#food" data-toggle="tab">langFood</a></li>
+                        <li><a href="#decoration" data-toggle="tab">langDecoration</a></li>
+                        <li><a href="#redstone" data-toggle="tab">langRedstone</a></li>
+                        <li><a href="#transportation" data-toggle="tab">langTransportation</a></li>
+                        <li><a href="#micellaneous" data-toggle="tab">langMicellaneous</a></li>
+                        <li><a href="#materials" data-toggle="tab">langMaterials</a></li>
+                        <li><a href="#others" data-toggle="tab">langOthers</a></li>
                     </ul>
-                    <div id="tabs-1">
-                        <p>Do you want to buy or sell ?</p>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="search">                        
+                            <p>Do you want to buy or sell ?</p>
+                        </div>
+                        <div class="tab-pane" id="blocks">
+                            <table class="table" id="blocksTable">
+                                <thead>
+                                    <tr>
+                                        <th>langItem_info</th>
+                                        <th>langSeller</th>
+                                        <th>langExpires</th>
+                                        <th>langQuantity</th>
+                                        <th>langPrice_each</th>
+                                        <th>langPrice_total</th>
+                                        <th>langMarket_price</th>
+                                        <th>langbuy</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="5" class="dataTables_empty">Loading data from server</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="tab-pane" id="combat">
+                            <table class="table" id="combatTable">
+                                <thead>
+                                    <tr>
+                                        <th>langItem_info</th>
+                                        <th>langSeller</th>
+                                        <th>langExpires</th>
+                                        <th>langQuantity</th>
+                                        <th>langPrice_each</th>
+                                        <th>langPrice_total</th>
+                                        <th>langMarket_price</th>
+                                        <th>langbuy</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="5" class="dataTables_empty">Loading data from server</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="tab-pane" id="tools">
+                            <table class="table" id="toolsTable">
+                                <thead>
+                                    <tr>
+                                        <th>langItem_info</th>
+                                        <th>langSeller</th>
+                                        <th>langExpires</th>
+                                        <th>langQuantity</th>
+                                        <th>langPrice_each</th>
+                                        <th>langPrice_total</th>
+                                        <th>langMarket_price</th>
+                                        <th>langbuy</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="5" class="dataTables_empty">Loading data from server</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="tab-pane" id="food">
+                            <table class="table" id="foodTable" >
+                                <thead>
+                                    <tr>
+                                        <th>langItem_info</th>
+                                        <th>langSeller</th>
+                                        <th>langExpires</th>
+                                        <th>langQuantity</th>
+                                        <th>langPrice_each</th>
+                                        <th>langPrice_total</th>
+                                        <th>langMarket_price</th>
+                                        <th>langbuy</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="5" class="dataTables_empty">Loading data from server</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="tab-pane" id="decoration">
+                            <table class="table" id="decorationTable">
+                                <thead>
+                                    <tr>
+                                        <th>langItem_info</th>
+                                        <th>langSeller</th>
+                                        <th>langExpires</th>
+                                        <th>langQuantity</th>
+                                        <th>langPrice_each</th>
+                                        <th>langPrice_total</th>
+                                        <th>langMarket_price</th>
+                                        <th>langbuy</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="5" class="dataTables_empty">Loading data from server</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="tab-pane" id="redstone">
+                            <table class="table" id="redstoneTable">
+                                <thead>
+                                    <tr>
+                                        <th>langItem_info</th>
+                                        <th>langSeller</th>
+                                        <th>langExpires</th>
+                                        <th>langQuantity</th>
+                                        <th>langPrice_each</th>
+                                        <th>langPrice_total</th>
+                                        <th>langMarket_price</th>
+                                        <th>langbuy</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="5" class="dataTables_empty">Loading data from server</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="tab-pane" id="transportation">
+                            <table class="table" id="transportationTable">
+                                <thead>
+                                    <tr>
+                                        <th>langItem_info</th>
+                                        <th>langSeller</th>
+                                        <th>langExpires</th>
+                                        <th>langQuantity</th>
+                                        <th>langPrice_each</th>
+                                        <th>langPrice_total</th>
+                                        <th>langMarket_price</th>
+                                        <th>langbuy</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="5" class="dataTables_empty">Loading data from server</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="tab-pane" id="micellaneous">
+                            <table class="table" id="micellaneousTable">
+                                <thead>
+                                    <tr>
+                                        <th>langItem_info</th>
+                                        <th>langSeller</th>
+                                        <th>langExpires</th>
+                                        <th>langQuantity</th>
+                                        <th>langPrice_each</th>
+                                        <th>langPrice_total</th>
+                                        <th>langMarket_price</th>
+                                        <th>langbuy</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="5" class="dataTables_empty">Loading data from server</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="tab-pane" id="materials">
+                            <table class="table" id="materialsTable">
+                                <thead>
+                                    <tr>
+                                        <th>langItem_info</th>
+                                        <th>langSeller</th>
+                                        <th>langExpires</th>
+                                        <th>langQuantity</th>
+                                        <th>langPrice_each</th>
+                                        <th>langPrice_total</th>
+                                        <th>langMarket_price</th>
+                                        <th>langbuy</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="5" class="dataTables_empty">Loading data from server</td>
+                                    </tr>
+                                </tbody>
+                            </table> 
+                        </div>
+                        <div class="tab-pane" id="others">
+                            <table class="table" id="othersTable">
+                                <thead>
+                                    <tr>
+                                        <th>langItem_info</th>
+                                        <th>langSeller</th>
+                                        <th>langExpires</th>
+                                        <th>langQuantity</th>
+                                        <th>langPrice_each</th>
+                                        <th>langPrice_total</th>
+                                        <th>langMarket_price</th>
+                                        <th>langbuy</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="5" class="dataTables_empty">Loading data from server</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>                 
                     </div>
-                </div>
                 <footer>
                     <p>
                         Made by Stutiguias. Design by renanslk( or redbull52 ).

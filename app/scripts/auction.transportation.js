@@ -8,11 +8,10 @@ define(['jquery', 'translate'], function ($, translate) {
     auctionTransportation = {
         init : function() {
             this.oTable();
-            this.translateUI();
         },
 
         oTable : function() {
-            return $('#mainTable7').dataTable({
+            return $('#transportationTable').dataTable({
                 'bProcessing': true,
                 'bJQueryUI': true,
                 'bStateSave': false,
@@ -60,15 +59,6 @@ define(['jquery', 'translate'], function ($, translate) {
                 console.log( 'An error occurred on the server. Please try again in a minute.' );
             }
             this.oTable.fnProcessingIndicator( false );
-        },
-
-        translateUI : function () {
-            var prop;
-            var patt;
-            for (prop in translate) {
-                patt = new RegExp(prop, 'g');
-                $('#mainTable7').html($('#mainTable').html().replace(patt, translate[prop]));
-            }
         }
     };
 

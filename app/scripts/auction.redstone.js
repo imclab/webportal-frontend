@@ -8,11 +8,10 @@ define(['jquery', 'translate'], function ($, translate) {
     auctionRedstone = {
         init : function() {
             this.oTable();
-            this.translateUI();
         },
 
         oTable : function() {
-            return $('#mainTable5').dataTable({
+            return $('#redstoneTable').dataTable({
                 'bProcessing': true,
                 'bJQueryUI': true,
                 'bStateSave': false,
@@ -60,15 +59,6 @@ define(['jquery', 'translate'], function ($, translate) {
                 console.log( 'An error occurred on the server. Please try again in a minute.' );
             }
             this.oTable.fnProcessingIndicator( false );
-        },
-
-        translateUI : function () {
-            var prop;
-            var patt;
-            for (prop in translate) {
-                patt = new RegExp(prop, 'g');
-                $('#mainTable5').html($('#mainTable').html().replace(patt, translate[prop]));
-            }
         }
     };
 

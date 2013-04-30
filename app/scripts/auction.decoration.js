@@ -8,11 +8,10 @@ define(['jquery', 'translate'], function ($, translate) {
     auctionDecoration = {
         init : function() {
             this.oTable();
-            this.translateUI();
         },
 
         oTable : function() {
-            return $('#mainTable8').dataTable({
+            return $('#decorationTable').dataTable({
                 'bProcessing': true,
                 'bJQueryUI': true,
                 'bStateSave': false,
