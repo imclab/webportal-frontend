@@ -46,7 +46,7 @@
                     </div>
                 </div>
             <div class="container">
-                <form action="/admsearch" method="get" onsubmit="return adm(this)" >
+                <form id="adminSearchForm" >
                     <input type="text" name="nick" value="Insert Nick/Name" />
                     <select name="information">
                         <option selected="selected" value="playerinfo">Player Info</option>
@@ -59,14 +59,14 @@
                 </form>
                 <div id="resultado" style="text-align:center;"></div>
                 <div id="wshop" style="text-align:center;">
-                    <form action='web/shop' method='GET' onsubmit='return adminshop(this)'>
+                    <form id="adminShopForm">
                         Quantity: <input type='text' name='quantity' onKeyPress='return numbersonly(this, event);' class='input' /> ( 9999 for infinity )<br />
                         Item ID: <input type='text' name='ItemId' onKeyPress='return numbersonly(this, event);' class='input' /><br />
                         Price: <input name='Price' type='text' onKeyPress='return numbersonly(this, event);' class='input' size='10' /><br />
                         <input type='submit' value='Create Admin Shop' class='button' />
                     </form>
                 </div>
-                <table border="0" class="display" id="mainTable">
+                <table class="display table" id="mainTable">
                     <thead>
                         <tr>
                             <th>langItem_info</th>

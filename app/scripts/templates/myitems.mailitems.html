@@ -1,4 +1,4 @@
-<form action='web/mail' method='GET' onsubmit='return mail(this)'>
+<form id="mailItemsForm">
     <input type='hidden' name='ID' value='"+ID+"' />
     <input type='text' name='Quantity' onKeyPress='return numbersonly(this, event);' class='input' size='5' /><br />
     <input type='submit' value='" + plugin.Messages.get("Mailit") + "' class='button' />
