@@ -3,16 +3,11 @@
 define(['jquery', 'translate'], function ($, translate) {
     'use strict';
 
-    var datatablesExtend;
+    var datatablesGetdata;
 
-    datatablesExtend = {
-        init : function(tableId) {
-            var ajaxSource;
-            ajaxSource = 'fill/auction/by' + tableId;
-            console.log(ajaxSource);
-            tableId = '#' + tableId +'Table';
-            console.log(tableId);
-            this.oTable(tableId, ajaxSource);
+    datatablesGetdata = {
+        init : function(options) {
+            this.oTable(options.tableId, options.ajaxSource);
         },
 
         oTable : function(tableId, ajaxSource) {
@@ -67,6 +62,6 @@ define(['jquery', 'translate'], function ($, translate) {
         }
     };
 
-    return datatablesExtend;
+    return datatablesGetdata;
 
 });
