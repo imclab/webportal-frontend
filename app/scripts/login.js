@@ -1,6 +1,6 @@
 /*global define */
 
-define(['jquery', 'bootstrap'], function ($) {
+define(['jquery'], function ($) {
     'use strict';
 
     var login;
@@ -23,20 +23,24 @@ define(['jquery', 'bootstrap'], function ($) {
                 type: 'get',
                 url: '/web/login',
                 data: $(form).serialize(),
-                success: function (data) {
+                dataType: 'text'
+            })
+            .done(
+                function (data) {
                     if (data === 'ok') {
                         window.location = '/index.html';
                     } else if (data === 'no') {
                         $('#alert').show();
                     } else {
-
+                        console.log(data);
                     }
-                },
-                error: function (error) {
-                    console.log(error);
-                },
-                dataType: 'text'
-            });
+                }
+            )
+            .fail(
+                function (msg) {
+                    console.log(msg);
+                }
+            );
             return false;
         }
     };

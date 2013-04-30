@@ -3,28 +3,25 @@
 define([
     'jquery',
     'translate',
-    'helpers/datatables.extend',
+    'views/user',
+    'helpers/datatables.getdata',
+    'helpers/datatables.config',
     'views/table',
-    'datatables'
+    'bootstrap'
 ], function (
     $,
     translate,
-    datatablesExtend
+    user,
+    datatablesGetdata
 ) {
     'use strict';
 
     var auction;
 
-    $.fn.dataTableExt.oApi.fnProcessingIndicator = function ( oSettings, onoff ) {
-        if ( typeof( onoff ) === 'undefined' ) {
-            onoff = true;
-        }
-        this.oApi._fnProcessingDisplay( oSettings, onoff );
-    };
-
     auction = {
         init : function() {
             this.bindEvent();
+            user.init();
         },
 
         bindEvent : function() {
@@ -33,7 +30,10 @@ define([
                 currentTab = currentTab.split('#');
                 currentTab = currentTab[1];
 
-                datatablesExtend.init(currentTab);
+                datatablesGetdata.init({
+                    ajaxSource : 'fill/auction/by' + currentTab,
+                    tableId : '#' + currentTab +'Table'
+                });
 
             });
         },

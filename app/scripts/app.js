@@ -56,7 +56,7 @@ define([
             location = location.split('.');
             location = location[0];
             return location;
-        }
+        },
 
     };
 
