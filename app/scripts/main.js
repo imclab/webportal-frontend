@@ -2,6 +2,7 @@ require.config({
     paths: {
         jquery: '../components/jquery/jquery',
         datatables: '../components/datatables/media/js/jquery.dataTables',
+        autofill: '../components/autofill/media/js/AutoFill',
         bootstrap: 'vendor/bootstrap'
     },
     shim: {
@@ -11,6 +12,9 @@ require.config({
         },
         datatables: {
             deps: ['jquery']
+        },
+        autofill: {
+            deps: ['datatables']
         }
     }
 });
