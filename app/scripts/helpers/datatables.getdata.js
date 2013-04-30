@@ -11,6 +11,8 @@ define(['jquery', 'translate'], function ($, translate) {
         },
 
         oTable : function(tableId, ajaxSource) {
+            var self = this;
+
             return $(tableId).dataTable({
                 'bProcessing': true,
                 //'bJQueryUI': true,
@@ -46,7 +48,7 @@ define(['jquery', 'translate'], function ($, translate) {
                         'timeout': 15000
                     })
                     .done(fnCallback)
-                    .fail(this.handleAjaxError);
+                    .fail(self.handleAjaxError);
                 }
             });
         },

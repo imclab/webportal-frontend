@@ -11,16 +11,16 @@ define(['jquery'], function ($) {
         },
 
         fetchUser : function() {
-            var that = this;
+            var self = this;
             $.ajax({
                 url: '/server/username/info',
                 dataType: 'text'
             })
             .done(
-                function(data) { that.render(data); }
+                function(data) { self.render(data); }
             )
             .fail(
-                function(data) { that.fetchUserFail(data); }
+                function(data) { self.fetchUserFail(data); }
             );
         },
 
