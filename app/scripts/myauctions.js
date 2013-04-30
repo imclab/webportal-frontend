@@ -3,8 +3,8 @@
 define([
     'jquery',
     'translate',
-    'helpers/datatables.getdata',
     'views/user',
+    'helpers/datatables.getdata',
     'helpers/datatables.config'
 ], function (
     $,
