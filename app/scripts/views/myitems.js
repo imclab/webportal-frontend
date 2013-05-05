@@ -19,7 +19,7 @@ define([
             this.bindEvents();
             datatablesGetdata.init({
                 'tableId' : '#myItems',
-                'ajaxSource' : 'fill/myitems'
+                'ajaxSource' : 'fill/myitens'
             });
             user.init();
         },
