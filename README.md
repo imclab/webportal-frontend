@@ -19,4 +19,5 @@ Anyone and everyone is welcome to contribute.
 ## Build
 1. install [bower](http://twitter.github.io/bower/), [grunt](http://gruntjs.com/), [compass](http://compass-style.org/)
 1. `npm install && bower install`
-1. `grunt`
+1. `grunt --force`
+1. copy `app/components/requirejs/require.js` to `dist/script/`
