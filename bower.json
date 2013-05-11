@@ -7,8 +7,9 @@
     "modernizr": "~2.6.2",
     "jquery": "~1.9.1",
     "datatables": "~1.9.4",
-    "jqueryuibootstrap": "latest",
-    "autofill": "1.1.2"
+    "autofill": "1.1.2",
+    "moment": "~2.0.0",
+    "ember.js": "~1.0.0-rc.3"
   },
   "devDependencies": {}
 }
