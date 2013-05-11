@@ -40,7 +40,7 @@ define([
         postAuction :  function (form) {
             var ar = $(form).serializeArray();
             $.ajax({
-                url: form.action,
+                url: 'web/postauction',
                 data: $(form).serialize(),
                 dataType: 'text'
             })
@@ -70,7 +70,7 @@ define([
         mailItems : function (form) {
             var ar = $(form).serializeArray();
             $.ajax({
-                url: form.action,
+                url: 'web/mail',
                 data: $(form).serialize(),
                 dataType: 'text'
             })

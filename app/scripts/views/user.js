@@ -7,6 +7,7 @@ define(['jquery'], function ($) {
 
     user = {
         init : function() {
+            console.log('init user');
             this.fetchUser();
         },
 
@@ -17,7 +18,10 @@ define(['jquery'], function ($) {
                 dataType: 'text'
             })
             .done(
-                function(data) { self.render(data); }
+                function(data) {
+                    console.log(data);
+                    self.render(data);
+                }
             )
             .fail(
                 function(data) { self.fetchUserFail(data); }
@@ -31,6 +35,7 @@ define(['jquery'], function ($) {
         render : function(data) {
             try {
                 var vals = data.split(',');
+                console.log(data);
                 $('#user').html(vals[0] + vals[1]);
                 $('#money').html(vals[2]);
                 $('#mail').html(vals[3]);

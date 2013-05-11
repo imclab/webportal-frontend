@@ -64,7 +64,7 @@ define([
         adminShop : function (form) {
             //var ar = $(form).serializeArray();
             $.ajax({
-                url: 'web/shop',
+                url: '/web/shop',
                 data: $(form).serialize(),
                 dataType: 'text'
             })
@@ -93,7 +93,7 @@ define([
         adminShopDelete :  function (form) {
             var ar = $(form).serializeArray();
             $.ajax({
-                url: 'web/delete',
+                url: '/web/delete',
                 data: $(form).serialize(),
                 dataType: 'text'
             })

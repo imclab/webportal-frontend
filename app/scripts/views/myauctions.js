@@ -35,7 +35,7 @@ define([
         cancelAuction : function (form) {
             var ar = $(form).serializeArray();
             $.ajax({
-                url: form.action,
+                url: 'cancel/auction',
                 data: $(form).serialize(),
                 dataType: 'text'
             })

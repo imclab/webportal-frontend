@@ -7,6 +7,7 @@ define([
     'views/login',
     'views/myauctions',
     'views/myitems',
+    'views/user',
     'helpers/datatables.bootstrap',
     'helpers/datatables.numericsort'
 ], function (
@@ -15,7 +16,8 @@ define([
     auction,
     login,
     myAuctions,
-    myItems
+    myItems,
+    user
 ) {
 
     'use strict';
@@ -41,6 +43,9 @@ define([
                 break;
             case 'myitems' :
                 myItems.init();
+                break;
+            case 'index' :
+                console.log('index init');
                 break;
             }
         },

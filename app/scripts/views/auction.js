@@ -45,7 +45,7 @@ define([
         buy : function (form) {
             var ar = $(form).serializeArray();
             $.ajax({
-                url: form.action,
+                url: 'buy/item',
                 data: $(form).serialize(),
                 dataType: 'text'
             })
