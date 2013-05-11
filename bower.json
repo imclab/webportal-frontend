@@ -6,8 +6,6 @@
     "requirejs": "~2.1.4",
     "modernizr": "~2.6.2",
     "jquery": "~1.9.1",
-    "datatables": "~1.9.4",
-    "autofill": "1.1.2",
     "moment": "~2.0.0",
     "ember.js": "~1.0.0-rc.3"
   },
