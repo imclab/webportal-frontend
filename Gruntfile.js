@@ -6,12 +6,12 @@ var mountFolder = function (connect, dir) {
 };
 
 // PHP gateway
-//var gateway = require('gateway');
-//var phpGateway = function (dir){
-//    return gateway(require('path').resolve(dir), {
-//        '.php': 'php-cgi'
-//    });
-//};
+var gateway = require('gateway');
+var phpGateway = function (dir){
+    return gateway(require('path').resolve(dir), {
+        '.php': 'php-cgi'
+    });
+};
 
 // # Globbing
 // for performance reasons we're only matching one level down:
@@ -51,7 +51,7 @@ module.exports = function (grunt) {
             livereload: {
                 files: [
                     '<%= yeoman.app %>/*.html',
-                    //'<%= yeoman.app %>/*.php',
+                    '<%= yeoman.app %>/*.php',
                     '{.tmp,<%= yeoman.app %>}/styles/{,*/}*.css',
                     '{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js',
                     '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
@@ -70,7 +70,7 @@ module.exports = function (grunt) {
                     middleware: function (connect) {
                         return [
                             lrSnippet,
-                            //phpGateway('app'),
+                            phpGateway('app'),
                             mountFolder(connect, '.tmp'),
                             mountFolder(connect, 'app')
                         ];
