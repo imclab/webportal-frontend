@@ -5,3 +5,5 @@ dist
 composer.lock
 app/components
 app/api/vendor
+app/api/config.php
+app/.tmp
