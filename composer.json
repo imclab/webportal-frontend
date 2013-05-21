@@ -1,6 +1,7 @@
 {
     "require": {
-        "slim/slim": "2.*"
+        "slim/slim": "2.*",
+        "j4mie/paris": ">=1.3.0"
     },
     "config": {
         "vendor-dir": "app/api/vendor"

@@ -3,7 +3,7 @@
 'use strict';
 
 Webportal.IndexRoute = Ember.Route.extend({
-  setupController: function (controller, model) {
-    controller.set ('content', model);
+  redirect: function () {
+    this.transitionTo('auctions');
   }
 });

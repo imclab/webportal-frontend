@@ -1,17 +1,6 @@
 // Generated on 2013-05-07 using generator-ember 0.2.4
 'use strict';
 var lrSnippet = require('grunt-contrib-livereload/lib/utils').livereloadSnippet;
-var mountFolder = function (connect, dir) {
-    return connect.static(require('path').resolve(dir));
-};
-
-// PHP gateway
-var gateway = require('gateway');
-var phpGateway = function (dir){
-    return gateway(require('path').resolve(dir), {
-        '.php': 'php-cgi'
-    });
-};
 
 // # Globbing
 // for performance reasons we're only matching one level down:
@@ -44,10 +33,6 @@ module.exports = function (grunt) {
                 files: ['test/spec/{,*/}*.coffee'],
                 tasks: ['coffee:test']
             },
-            compass: {
-                files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
-                tasks: ['compass:server']
-            },
             livereload: {
                 files: [
                     '<%= yeoman.app %>/*.html',
@@ -59,47 +44,19 @@ module.exports = function (grunt) {
                 tasks: ['livereload']
             }
         },
-        connect: {
-            options: {
-                port: 9000,
-                // change this to '0.0.0.0' to access the server from outside
-                hostname: 'localhost'
-            },
+        php: {
             livereload: {
                 options: {
-                    middleware: function (connect) {
-                        return [
-                            lrSnippet,
-                            phpGateway('app'),
-                            mountFolder(connect, '.tmp'),
-                            mountFolder(connect, 'app')
-                        ];
-                    }
-                }
-            },
-            test: {
-                options: {
-                    middleware: function (connect) {
-                        return [
-                            mountFolder(connect, '.tmp'),
-                            mountFolder(connect, 'test')
-                        ];
-                    }
-                }
-            },
-            dist: {
-                options: {
-                    middleware: function (connect) {
-                        return [
-                            mountFolder(connect, 'dist')
-                        ];
-                    }
+                    port: 9000,
+                    base: 'app',
+                    keepalive: true,
+                    open: true
                 }
             }
         },
         open: {
             server: {
-                path: 'http://localhost:<%= connect.options.port %>'
+                path: 'http://localhost:<%= php.options.port %>'
             }
         },
         clean: {
@@ -113,7 +70,14 @@ module.exports = function (grunt) {
                     ]
                 }]
             },
-            server: '.tmp'
+            server: {
+                files: [{
+                    src: [
+                        '.tmp',
+                        '<%= yeoman.app %>/.tmp'
+                    ]
+                }]
+            }
         },
         jshint: {
             options: {
@@ -130,7 +94,7 @@ module.exports = function (grunt) {
             all: {
                 options: {
                     run: true,
-                    urls: ['http://localhost:<%= connect.options.port %>/index.html']
+                    urls: ['http://localhost:<%= php.options.port %>/index.html']
                 }
             }
         },
@@ -152,23 +116,6 @@ module.exports = function (grunt) {
                     dest: '.tmp/spec',
                     ext: '.js'
                 }]
-            }
-        },
-        compass: {
-            options: {
-                sassDir: '<%= yeoman.app %>/styles',
-                cssDir: '.tmp/styles',
-                imagesDir: '<%= yeoman.app %>/images',
-                javascriptsDir: '<%= yeoman.app %>/scripts',
-                fontsDir: '<%= yeoman.app %>/styles/fonts',
-                importPath: 'app/components',
-                relativeAssets: true
-            },
-            dist: {},
-            server: {
-                options: {
-                    debugInfo: true
-                }
             }
         },
         // not used since Uglify task does concat,
@@ -277,18 +224,15 @@ module.exports = function (grunt) {
         },
         concurrent: {
             server: [
-                'ember_templates',
+                'ember_templates:server',
                 'coffee:dist',
-                'compass:server'
             ],
             test: [
                 'coffee',
-                'compass'
             ],
             dist: [
                 'ember_templates',
                 'coffee',
-                'compass:dist',
                 'imagemin',
                 'svgmin',
                 'htmlmin'
@@ -305,6 +249,11 @@ module.exports = function (grunt) {
                 files: {
                     '.tmp/scripts/compiled-templates.js': '<%= yeoman.app %>/templates/{,*/}*.hbs'
                 }
+            },
+            server: {
+                files: {
+                    '<%= yeoman.app %>/.tmp/scripts/compiled-templates.js': '<%= yeoman.app %>/templates/{,*/}*.hbs'
+                }
             }
         }
 
@@ -312,26 +261,17 @@ module.exports = function (grunt) {
 
     grunt.renameTask('regarde', 'watch');
 
-    grunt.registerTask('server', function (target) {
-        if (target === 'dist') {
-            return grunt.task.run(['build', 'open', 'connect:dist:keepalive']);
-        }
-
-        grunt.task.run([
-            'clean:server',
-            'concurrent:server',
-            'livereload-start',
-            'connect:livereload',
-            'open',
-            'watch'
-        ]);
-    });
-
     grunt.registerTask('test', [
         'clean:server',
         'concurrent:test',
-        'connect:test',
         'mocha'
+    ]);
+
+    grunt.registerTask('server', [
+        'clean:server',
+        'concurrent:server',
+        'watch',
+        'php:livereload'
     ]);
 
     grunt.registerTask('build', [
